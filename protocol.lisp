@@ -101,6 +101,9 @@
       (make-pipe (elt vector start)
                  (vector->pipe vector (1+ start)))))
 
+(defun list->pipe (list)
+  (and list (make-pipe (car list) (list->pipe (cdr list)))))
+
 ;; DOM mapping: simple slots
 
 (define-default-method xpath-protocol:node-p ((node dom:node)) t)
